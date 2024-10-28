@@ -32,7 +32,9 @@ class MultiSelectActions<T> {
       }
 
       if (shouldClose == null || shouldClose == true)
+      {
         Navigator.pop(ctx, selectedValues);
+      }
   }
 
   /// Accepts the search query, and the original list of items.
