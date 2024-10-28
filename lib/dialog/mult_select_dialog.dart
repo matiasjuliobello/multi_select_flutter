@@ -121,7 +121,7 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
     super.initState();
     _selectedValues.addAll(widget.initialValue);
 
-    print('_selectedValues.length: ${_selectedValues.length}');
+    print('initState._selectedValues.length: ${_selectedValues.length}');
 
     for (int i = 0; i < _items.length; i++) {
       _items[i].selected = false;
@@ -137,7 +137,8 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
 
   repaintSelectedItems()
   {
-    print('_selectedValues.length: ${_selectedValues.length}');
+    print('repaintSelectedItems._selectedValues.length: ${_selectedValues.length}');
+    print('repaintSelectedItems._items.length: ${_items.length}');
 
     List<MultiSelectItem<T>> items = [];
 
@@ -238,6 +239,7 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
 
   @override
   Widget build(BuildContext context) {
+    print('build.multi_select_dialog');
     repaintSelectedItems();
     return AlertDialog(
       backgroundColor: widget.backgroundColor,
