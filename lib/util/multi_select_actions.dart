@@ -24,15 +24,15 @@ class MultiSelectActions<T> {
   (
     BuildContext ctx, List<T> selectedValues, bool? Function(List<T>)? onConfirm)
     {
-      bool shouldClose = true;
+      bool? shouldClose = true;
 
       if (onConfirm != null)
       {
         shouldClose = onConfirm(selectedValues);
       }
 
-      if (shouldClose)
-      Navigator.pop(ctx, selectedValues);
+      if (shouldClose == null || shouldClose == true)
+        Navigator.pop(ctx, selectedValues);
   }
 
   /// Accepts the search query, and the original list of items.
