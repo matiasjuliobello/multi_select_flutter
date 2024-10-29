@@ -121,17 +121,9 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
     super.initState();
     _selectedValues.addAll(widget.initialValue);
 
-    print('_selectedValues: ${_selectedValues.length}');
-    for (int i = 0; i < _selectedValues.length; i++) {
-      print('_selectedValues[${i}]: ${_selectedValues[i]}');
-    }
-    print('....');
     for (int i = 0; i < _items.length; i++) {
       _items[i].selected = false;
-      print('_items[${i}].value : ${_items[i].value}');
-
       if (_selectedValues.contains(_items[i].value)) {
-        print('found matching element: ${_items[i].label}');
         _items[i].selected = true;
       }
     }
