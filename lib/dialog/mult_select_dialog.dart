@@ -121,11 +121,10 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
     super.initState();
     _selectedValues.addAll(widget.initialValue);
 
-    print('initState._selectedValues.length: ${_selectedValues.length}');
-
     for (int i = 0; i < _items.length; i++) {
       _items[i].selected = false;
       if (_selectedValues.contains(_items[i].value)) {
+        print('found matching element: ${_items[i].label}');
         _items[i].selected = true;
       }
     }
@@ -133,27 +132,6 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
     if (widget.separateSelectedItems) {
       _items = widget.separateSelected(_items);
     }
-  }
-
-  repaintSelectedItems()
-  {
-    print('repaintSelectedItems._selectedValues.length: ${_selectedValues.length}');
-    print('repaintSelectedItems._items.length: ${_items.length}');
-
-    List<MultiSelectItem<T>> items = [];
-
-    for (int i = 0; i < _items.length; i++) {
-      _items[i].selected = false;
-      if (_selectedValues.contains(_items[i].value)) {
-        _items[i].selected = true;
-      }
-    }
-
-    items = _items;
-
-    setState(() {
-      _items = items;
-    });
   }
 
   /// Returns a CheckboxListTile
@@ -239,8 +217,6 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
 
   @override
   Widget build(BuildContext context) {
-    print('build.multi_select_dialog');
-    repaintSelectedItems();
     return AlertDialog(
       backgroundColor: widget.backgroundColor,
       title: widget.searchable == false
